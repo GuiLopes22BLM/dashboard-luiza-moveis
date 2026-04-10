@@ -1,0 +1,178 @@
+/* ════════════════════════════════════════════════════════════════════════════
+   Luiza Móveis Dashboard — Global Stylesheet
+   Stack: Streamlit + Tailwind-inspired design system
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+html, body, [class*="css"] {
+  font-family: 'Inter', 'Segoe UI', sans-serif !important;
+}
+
+/* Remove padding excessivo do container principal */
+.block-container {
+  padding-top:    2rem   !important;
+  padding-bottom: 3rem   !important;
+  max-width:      1400px !important;
+}
+
+/* Esconde elementos nativos do Streamlit */
+#MainMenu,
+footer,
+[data-testid="stToolbar"],
+[data-testid="stDecoration"] {
+  visibility: hidden !important;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+  background: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+}
+
+section[data-testid="stSidebar"] > div:first-child {
+  width: 220px !important;
+}
+
+/* ── KPI Metric Cards ─────────────────────────────────────────────────────── */
+[data-testid="metric-container"] {
+  background:    #FFFFFF !important;
+  border-radius: 12px    !important;
+  padding:       1.5rem  !important;
+  box-shadow:
+    0 1px 3px  rgba(0, 0, 0, 0.06),
+    0 4px 6px -1px rgba(0, 0, 0, 0.10) !important;
+  border: 1px solid #F1F5F9 !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+[data-testid="metric-container"]:hover {
+  box-shadow:
+    0 4px 12px rgba(0, 92, 254, 0.10),
+    0 8px 30px rgba(0, 0,   0,  0.08) !important;
+  transform: translateY(-2px);
+}
+
+/* Label da métrica — cinza suave, maiúsculas */
+[data-testid="stMetricLabel"] > div {
+  font-size:      11px    !important;
+  font-weight:    700     !important;
+  color:          #6B7280 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.55px;
+  white-space:    nowrap  !important;
+  overflow:       hidden;
+  text-overflow:  ellipsis;
+}
+
+/* Valor principal — negrito escuro */
+[data-testid="stMetricValue"] > div {
+  font-size:   1.65rem !important;
+  font-weight: 800     !important;
+  color:       #111827 !important;
+  white-space: nowrap  !important;
+}
+
+[data-testid="stMetricDelta"] > div {
+  font-size: 12px !important;
+}
+
+/* ── Plotly Chart Cards ───────────────────────────────────────────────────── */
+[data-testid="stPlotlyChart"] {
+  background:    #FFFFFF !important;
+  border-radius: 16px    !important;
+  overflow:      hidden  !important;
+  box-shadow:
+    0 1px 3px  rgba(0, 0, 0, 0.06),
+    0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #F1F5F9 !important;
+  transition: box-shadow 0.25s ease;
+}
+
+[data-testid="stPlotlyChart"]:hover {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 8px 30px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ── DataFrames ───────────────────────────────────────────────────────────── */
+[data-testid="stDataFrame"] {
+  border-radius: 12px !important;
+  overflow:      hidden !important;
+  box-shadow:
+    0 1px 3px  rgba(0, 0, 0, 0.06),
+    0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #F1F5F9 !important;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.stButton > button {
+  border-radius: 8px    !important;
+  font-weight:   600    !important;
+  transition: all 0.25s ease !important;
+}
+
+.stButton > button:hover {
+  transform:  translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(0, 92, 254, 0.25) !important;
+}
+
+/* ── Filter Bar (pill inputs) ─────────────────────────────────────────────── */
+[data-testid="stHorizontalBlock"]:has(
+  [data-testid="stMultiSelect"],
+  [data-testid="stDateInput"]
+) {
+  background:    #FFFFFF;
+  border-radius: 14px;
+  padding:       10px 16px 12px;
+  box-shadow:
+    0 1px 3px  rgba(0, 0, 0, 0.05),
+    0 4px 14px rgba(0, 0, 0, 0.04);
+  border:        1px solid #F1F5F9;
+  margin-bottom: 18px;
+  align-items:   flex-start;
+}
+
+[data-testid="stDateInput"] input {
+  background:    #F8FAFC         !important;
+  border:        1.5px solid #E5E7EB !important;
+  border-radius: 20px            !important;
+  font-size:     13px            !important;
+  padding:       6px 14px       !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+[data-testid="stDateInput"] input:focus {
+  border-color: #005CFE !important;
+  box-shadow:   0 0 0 3px rgba(0, 92, 254, 0.10) !important;
+}
+
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div:first-child {
+  background:    #F8FAFC         !important;
+  border:        1.5px solid #E5E7EB !important;
+  border-radius: 20px            !important;
+  min-height:    36px            !important;
+  padding:       2px 12px       !important;
+  font-size:     13px            !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div:first-child:hover {
+  border-color: #005CFE !important;
+}
+
+/* ── Sidebar misc ─────────────────────────────────────────────────────────── */
+.sb-footer {
+  font-size:  11px;
+  color:      #D1D5DB;
+  text-align: center;
+  padding-top: 6px;
+}
+
+hr.sb-div {
+  border:     none;
+  border-top: 1px solid #F1F5F9;
+  margin:     10px 0;
+}
